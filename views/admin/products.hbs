@@ -1,0 +1,84 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="profile-card border">
+                <div class="profile-card-header">
+                    <div class="row">
+                        <div class="col-5 d-flex justify-content-center">
+                            <img class="rounded-circle shadow" src="/images/profile-admin.png" alt="" width="85px">
+                        </div>
+                        <div class="col-7 pt-2">
+                            <p class="text-dark fw-normal">{{username}}</p>
+                            <p class="text-muted"></p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="profile-card-body">
+                    <nav class="nav nav-pills nav-fill flex-column">
+                        <a class="nav-link active" href="/perfil">
+                            <ion-icon name="person-circle-outline"></ion-icon>
+                            <span>Perfil</span>
+                        </a>
+                        <a class="nav-link" href="/admin/productos">
+                            <ion-icon name="reader-outline"></ion-icon>
+                            <span>Productos</span>
+                        </a>
+                        <a class="nav-link" href="/admin/comentarios">
+                            <ion-icon name="clipboard-outline"></ion-icon>
+                            <span>Comentarios</span>
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <table class="table align-middle">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Imagen</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Categoría</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Descripcion</th>
+                        <th scope="col" width="150px">
+                            <a class="btn btn-primary btn-sm" href="/admin/productos/crear">Añadir Nuevo Producto</a>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each products}}
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>
+                            <img src="{{image}}" alt="{{name}}" class="img-fluid" width="50px" height="50px">
+                        </td>
+                        <td>
+                            {{name}}
+                        </td>
+                        <td>
+                            {{category}}
+                        </td>
+                        <td>
+                            {{price}} €
+                        </td>
+                        <td>
+                            {{description}}
+                        </td>
+                        <td>
+                            <div class="d-flex justify-content-between">
+                                <a class="btn btn-warning btn-sm" href="/admin/productos/{{_id}}/editar"
+                                    style="margin-right: 5px;">Editar</a>
+                                <form action="/admin/productos/{{_id}}/borrar" method="POST">
+                                    <button type="submit" class="btn btn-danger btn-sm" href="">Borrar</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8">
+            <table class="table align-middle">
+                <thead>
+                    <tr>
+                        <th scope="col">Imagen</th>
+                        <th scope="col">Producto</th>
+                        <th scope="col">Categoría</th>
+                        {{!-- <th scope="col">Cantidad</th> --}}
+                        <th scope="col">Precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each cart.product}}
+                    <tr>
+                        <td>
+                            <img src="{{image}}" alt="{{name}}" class="img-fluid" width="50px" height="50px">
+                        </td>
+                        <td>
+                            {{name}}
+                        </td>
+                        <td>
+                            {{category}}
+                        </td>
+                        <td>
+                            {{price}} €
+                        </td>
+                        <td>
+                            <div class="d-flex justify-content-between">
+                                <form action="/carrito/{{id}}/borrar" method="POST">
+                                    <button type="submit" class="btn btn-danger btn-sm" href="">Borrar</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+
+                <thead>
+                    <tr>
+                        <th scope="col" id="total-value">Total: <span>{{totalPrice}}</span>€</th>
+                        <th><a href="/payment" class="btn btn-primary">Pagar</a></th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
